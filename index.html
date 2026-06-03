@@ -266,6 +266,21 @@ section{ padding:96px 0; position:relative; }
 .method-band .mb-names span:hover{ color:var(--gold); }
 @media(max-width:560px){ .method-band .mb-names span{ padding:6px 16px; font-size:1rem; } }
 
+/* ===================== ABOUT / OVERVIEW ===================== */
+#about{ background:linear-gradient(180deg, transparent, rgba(255,255,255,0.012)); }
+.about-wrap{ max-width:760px; margin:0 auto; text-align:center; }
+.about-wrap p{ color:var(--cream-dim); font-size:1.08rem; line-height:1.95; margin-bottom:22px; }
+.about-wrap p.lead{ color:var(--cream); font-size:1.22rem; }
+.about-wrap p.lead b{ font-family:var(--font-wordmark); direction:ltr; letter-spacing:.18em; color:var(--gold); font-weight:400; }
+.about-contrast{
+  border:1px solid var(--border); border-right:3px solid var(--gold); border-radius:12px;
+  background:linear-gradient(160deg, rgba(25,30,42,0.6), rgba(17,21,30,0.5));
+  padding:22px 26px; margin:6px auto 0; box-shadow:var(--shadow-sm);
+}
+.about-contrast p{ margin:0; color:var(--cream); font-size:1.08rem; line-height:1.85; }
+.about-note{ margin-top:26px; border:1px solid var(--border-subtle); border-radius:12px; padding:18px 24px; background:rgba(255,255,255,0.015); }
+.about-note p{ margin:0; color:var(--muted); font-size:.94rem; line-height:1.8; }
+
 /* ===================== AI COPILOT ===================== */
 #copilot{ position:relative; }
 .ai-glow{ position:absolute; top:8%; right:-5%; width:520px; height:420px; pointer-events:none; background:radial-gradient(ellipse at center, rgba(201,169,110,0.09), transparent 65%); }
@@ -543,6 +558,26 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
       <div class="prob-card reveal"><h3>אקסלים מרובים ומפוזרים</h3><p>הפורטפוליו מפוזר על פני עשרות קבצים שלא מדברים זה עם זה. נוסחה אחת שנשברת או גרסה ישנה שנפתחה בטעות, והמספרים כבר לא אמינים. אין תמונה אחת מאוחדת.</p></div>
       <div class="prob-card reveal d1"><h3>הקלדה ידנית וטעויות</h3><p>העתקה ידנית של נתונים מ-PDF לאקסל: EBITDA רבעוני מול שנתי, מיליארדים מול מיליונים, יחסים שלא תואמים לחישוב. תא אחד שגוי מזיז את הדירוג בדרגה שלמה.</p></div>
       <div class="prob-card reveal d2"><h3>איטיות ואיתור מאוחר</h3><p>כשכל נייר לוקח שעות, המעקב מפגר אחרי השוק. משיכת בעל שליטה, איחור בדיווח או קובננט שנשבר מתגלים מאוחר מדי, כשהמרווח כבר רץ והנזק נעשה.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT / OVERVIEW ===================== -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Overview</div>
+      <div class="section-title">מהי ARIYA</div>
+    </div>
+    <div class="about-wrap">
+      <p class="lead reveal"><b>ARIYA</b> היא פלטפורמת ניתוח אשראי וניטור סיכונים באג"ח קונצרניות, המותאמת לשוק הישראלי ולצרכים של משקיעים מוסדיים.</p>
+      <p class="reveal d1">המערכת מרכזת את תהליך העבודה במקום אחד: חילוץ נתונים מדוחות כספיים, חישוב יחסי אשראי, דירוג פנימי, תמחור אג"ח, ניטור קובננטים, זיהוי פערים מול תמחור השוק ומעקב אחר רמת הסיכון בתיק.</p>
+      <div class="about-contrast reveal d2">
+        <p>במקום עבודה מפוזרת בין גיליונות אקסל, דוחות PDF ודיווחים שוטפים, ARIYA מאפשרת לאנליסט ולמנהל ההשקעות לקבל תמונת אשראי אחידה, עקבית וניתנת לבקרה.</p>
+      </div>
+      <div class="about-note reveal d2">
+        <p>המערכת אינה מחליפה שיקול דעת מקצועי, אלא מספקת שכבת ניתוח, בקרה וניטור שמסייעת לזהות מוקדם שינוי באיכות האשראי, חריגה במדדים פיננסיים או פער בין הדירוג הרשמי, תמחור השוק והמודל הפנימי.</p>
+      </div>
     </div>
   </div>
 </section>
