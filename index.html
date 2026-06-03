@@ -469,9 +469,8 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
       <a href="#features">יכולות</a>
       <a href="#portfolio">ניהול תיקים</a>
       <a href="#how">איך זה עובד</a>
-      <a href="#pricing">מסלולים</a>
       <a href="#faq">שאלות</a>
-      <a class="nav-cta" onclick="openModal('subscribe')">כניסה למערכת</a>
+      <a class="nav-cta" onclick="openModal('contact')">תיאום הדגמה</a>
     </div>
     <button class="menu-btn" id="menuBtn" aria-label="תפריט"><span></span><span></span><span></span></button>
   </div>
@@ -487,8 +486,8 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
         <h1 class="reveal in d1">ניתוח אשראי ותמחור אג"ח<br><span class="accent">ברמת דסק מוסדי.</span></h1>
         <p class="sub reveal in d2">ARIYA הופכת דוח כספי גולמי לציון אשראי, תמחור תיאורטי והתרעת מצוקה מוקדמת, תוך פחות מדקה. מנוע קנייני שנבנה לאנליסטים שמנהלים חוב קונצרני בקנה מידה מוסדי.</p>
         <div class="hero-cta-row reveal in d3">
-          <button class="btn-primary" onclick="openModal('subscribe')">התחלת מנוי</button>
-          <button class="btn-ghost" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">צפייה במסלולים</button>
+          <button class="btn-primary" onclick="openModal('contact')">תיאום הדגמה</button>
+          <button class="btn-ghost" onclick="document.getElementById('copilot').scrollIntoView({behavior:'smooth'})">סיור ביכולות</button>
         </div>
         <div class="hero-stats reveal in d4">
           <div class="stat"><div class="n">20</div><div class="l">סקטורים ממופים</div></div>
@@ -563,6 +562,8 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
           <div class="ai-feat"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 8v4l3 2"/></svg><span>הסבר מאחורי כל ציון אשראי</span></div>
           <div class="ai-feat"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M9 9h6v6H9z"/></svg><span>חילוץ נתונים מדוחות אוטומטית</span></div>
           <div class="ai-feat"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h12"/></svg><span>השוואת חלופות וסקטורים</span></div>
+          <div class="ai-feat"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg><span>ניתוח סיכוני תיק בלחיצה אחת</span></div>
+          <div class="ai-feat"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 010 18M12 3v9l6 3"/></svg><span>איתור ריכוזיות ופיזור בתיק</span></div>
         </div>
       </div>
 
@@ -607,6 +608,9 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
       <div class="feat reveal"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9v6a3 3 0 003 3h6"/></svg></div><h3>חשיפה צולבת</h3><p>סריקת כל התיקים בו זמנית כדי לחשוף את החשיפה הכוללת לאותו מנפיק, ממוינת לפי משקל בכל תיק.</p></div>
       <div class="feat reveal d1"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2l9 4.5v5C21 17 17 21 12 23 7 21 3 17 3 11.5v-5z"/></svg></div><h3>דיסוננס דירוג-שוק</h3><p>זיהוי פער בין הדירוג הרשמי, הדירוג שהשוק מתמחר, וההערכה של המודל. אזהרה מוקדמת לפני שהשוק מתעורר.</p></div>
       <div class="feat reveal d2"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 16v-5M12 16V8M16 16v-9"/></svg></div><h3>מנוע ניטור</h3><p>צילום מצב תקופתי של התיק, מעקב אחר האצת מרווחים וקליטת דיווחי MAYA חיים בעמוד המצוקה.</p></div>
+      <div class="feat reveal"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></div><h3>מבט-על מצרפי</h3><p>לוח בקרה שמרכז את כל מדדי הסיכון של התיק במסך אחד: ציון משוקלל, פיזור, תשואה ממוצעת וטיקר חי של האחזקות.</p></div>
+      <div class="feat reveal d1"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>בקרת השקעות</h3><p>הגדרת מגבלות מנדט והתרעה על חריגה: תקרת מח"מ, חשיפה ל-High Yield, משקל מקסימלי לסקטור ולמנפיק יחיד וציון סיכון משוקלל.</p></div>
+      <div class="feat reveal d2"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 12h3l3 7 4-14 3 7h5"/></svg></div><h3>בחינות לחץ</h3><p>תרחישי קיצון ברמת האג"ח הבודדת וברמת התיק כולו, לבחינת עמידות מול זעזועי ריבית, מרווח ואשראי.</p></div>
     </div>
 
     <div class="method-band reveal">
@@ -635,6 +639,8 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
           <div class="pf-feat reveal d3"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><div><h3>מפת חום של סיכון</h3><p>תמונת צבע מיידית: מצוקה, לבחינה והזדמנות, כך שהעין נופלת ישר על מה שדורש טיפול.</p></div></div>
           <div class="pf-feat reveal d3"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h12"/><circle cx="20" cy="18" r="1.6"/></svg></div><div><h3>סקרינר והשוואה</h3><p>טבלה הניתנת למיון לפי כל עמודה, סינון לפי סקטור, הצמדה ודירוג, ותשואה ריאלית מול נומינלית זו לצד זו.</p></div></div>
           <div class="pf-feat reveal d3"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9v6a3 3 0 003 3h6"/></svg></div><div><h3>חשיפה צולבת</h3><p>סריקה של כל התיקים בו זמנית, כדי לחשוף את החשיפה הכוללת לאותו מנפיק בכל התיקים.</p></div></div>
+          <div class="pf-feat reveal d3"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2l3 6 6.5.5-5 4.5 1.5 6.5L12 16l-6 3.5L7.5 13l-5-4.5L9 8z"/></svg></div><div><h3>השוואת פרופיל סיכון</h3><p>גרף רדאר שמציב כמה אג"ח זו מול זו לפי מדדי הסיכון, לבחירה מושכלת בין חלופות בדירוג דומה.</p></div></div>
+          <div class="pf-feat reveal d3"><div class="ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg></div><div><h3>טעינת אקסל מרוכזת</h3><p>העלאת תיק שלם מקובץ אקסל בבת אחת, במקום הזנה ידנית של כל נייר.</p></div></div>
         </div>
       </div>
 
@@ -694,7 +700,8 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
   </div>
 </section>
 
-<!-- ===================== PRICING ===================== -->
+<!-- ===================== PRICING (HIDDEN — להחזרה: הסר את תגי ההערה סביב הסקשן) ===================== -->
+<!-- PRICING_HIDDEN_START
 <section id="pricing">
   <div class="wrap">
     <div class="section-head reveal">
@@ -703,7 +710,7 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
       <p class="section-lead">משלושה בונדים בתיק יחיד ועד כיסוי בלתי מוגבל של תיקים מוסדיים, אותו מנוע ניתוח, בלי התחייבות ארוכת טווח.</p>
     </div>
     <div class="price-grid">
-      <!-- רגיל -->
+      [ מסלול רגיל ]
       <div class="plan reveal">
         <div class="ptype">Standard</div>
         <h3>רגיל</h3>
@@ -720,7 +727,7 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
         <button class="btn-ghost" onclick="openModal('subscribe')">בחירת רגיל</button>
       </div>
 
-      <!-- פרימיום -->
+      [ מסלול פרימיום ]
       <div class="plan featured reveal d1">
         <div class="plan-flag">הנפוץ ביותר</div>
         <div class="ptype">Premium</div>
@@ -738,7 +745,7 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
         <button class="btn-primary" onclick="openModal('subscribe')">בחירת פרימיום</button>
       </div>
 
-      <!-- פלטינום -->
+      [ מסלול פלטינום ]
       <div class="plan reveal d2">
         <div class="ptype">Platinum</div>
         <h3>פלטינום</h3>
@@ -757,6 +764,7 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
     </div>
   </div>
 </section>
+PRICING_HIDDEN_END -->
 
 <!-- ===================== FAQ ===================== -->
 <section id="faq">
@@ -767,11 +775,11 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
     </div>
     <div class="faq reveal">
       <div class="faq-item"><button class="faq-q">האם הנתונים שלי נשמרים בשרת חיצוני?<span class="pm">+</span></button><div class="faq-a"><p>הניתוח מבוסס על נתונים שאתם מזינים. המערכת נבנתה לעבודה מקצועית עם שמירה על סודיות המידע, וכל תיק נשמר בנפרד במרחב המשתמש.</p></div></div>
-      <div class="faq-item"><button class="faq-q">מה ההבדל בין המסלולים?<span class="pm">+</span></button><div class="faq-a"><p>כל המסלולים נותנים גישה לאותו מנוע ניתוח. ההבדל הוא בהיקף: רגיל מכסה עד 10 אג"ח בתיק יחיד, פרימיום עד 20 אג"ח בכל תיק ועד 4 תיקים במקביל, ופלטינום ללא הגבלת תיקים או אג"ח עם תמחור מוסדי פרטני. אפשר לשדרג בכל עת.</p></div></div>
+      <div class="faq-item"><button class="faq-q">אפשר לקבל הדגמה של המערכת?<span class="pm">+</span></button><div class="faq-a"><p>בהחלט. אנחנו עורכים הדגמה אישית שבה רצים על תיק לדוגמה, מציגים את מנוע הדירוג, התמחור, מד המצוקה ובקרת ההשקעות, ומתאימים את התרחיש לסוג האחזקות שלכם. ניתן לתאם דרך כפתור "תיאום הדגמה".</p></div></div>
       <div class="faq-item"><button class="faq-q">על איזו מתודולוגיה מבוסס המודל?<span class="pm">+</span></button><div class="faq-a"><p>מנוע הדירוג של ARIYA הוא קנייני, ונשען על עקרונות המתודולוגיה של חברות הדירוג המובילות: מעלות, מדרוג, Moody's ו-S&P. הוא מתרגם יחסים פיננסיים, מבנה הנפקה וסיכון סקטוריאלי לציון אחיד, ומספק דירוג משתמע לצד הסבר שקוף מאחורי כל ציון.</p></div></div>
       <div class="faq-item"><button class="faq-q">האם ARIYA מהווה ייעוץ השקעות?<span class="pm">+</span></button><div class="faq-a"><p>לא. ARIYA היא כלי אנליטי לבעלי מקצוע בלבד. הפלט אינו ייעוץ השקעות, שיווק השקעות או תחליף לבדיקת נאותות עצמאית. האחריות לשימוש ולהחלטות היא של המשתמש בלבד.</p></div></div>
       <div class="faq-item"><button class="faq-q">איזה סוגי מנפיקים נתמכים?<span class="pm">+</span></button><div class="faq-a"><p>המערכת מכסה 20 סקטורים ומיפוי של 239 מנפיקים בישראל, כולל בנקים, נדל"ן מניב ויזמי, חברות אחזקה, תשתיות, אנרגיה ומכשירי הון בנקאי כמו AT1 ו-Tier 2.</p></div></div>
-      <div class="faq-item"><button class="faq-q">איך מתחילים?<span class="pm">+</span></button><div class="faq-a"><p>בוחרים מסלול, משלימים את ההרשמה, ומקבלים גישה למערכת. למסלול פלטינום מתאמים פנייה אישית להתאמת ההיקף והתמחור.</p></div></div>
+      <div class="faq-item"><button class="faq-q">איך מתחילים?<span class="pm">+</span></button><div class="faq-a"><p>מתאמים פנייה אישית, עורכים הדגמה של המערכת על תיק לדוגמה, ומגדירים יחד את אופן ההטמעה והגישה בהתאם לצרכים שלכם.</p></div></div>
     </div>
   </div>
 </section>
@@ -781,10 +789,10 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
   <div class="wrap">
     <div class="cta-card reveal">
       <h2>מוכנים לראות את ARIYA בפעולה?</h2>
-      <p>בחרו מסלול והתחילו לנתח עוד היום. לפלטינום, תאמו פנייה אישית להתאמת ההיקף.</p>
+      <p>נשמח להציג הדגמה אישית של המערכת על תיק לדוגמה, ולבחון יחד התאמה לצרכים שלכם.</p>
       <div class="hero-cta-row" style="justify-content:center; position:relative;">
-        <button class="btn-primary" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">בחירת מסלול</button>
-        <button class="btn-ghost" onclick="openModal('platinum')">פנייה לפלטינום</button>
+        <button class="btn-primary" onclick="openModal('contact')">תיאום הדגמה</button>
+        <button class="btn-ghost" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">חזרה ליכולות</button>
       </div>
     </div>
   </div>
@@ -800,6 +808,7 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
 </footer>
 
 <!-- ===================== MODALS ===================== -->
+<!-- SUBSCRIBE_MODAL_HIDDEN_START
 <div class="modal-overlay" id="modal-subscribe">
   <div class="modal">
     <button class="close" onclick="closeModal()">×</button>
@@ -816,20 +825,21 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
     <p class="legal">בלחיצה על המשך אתם מאשרים את תנאי השימוש. החיוב חודשי, ניתן לביטול בכל עת.</p>
   </div>
 </div>
+SUBSCRIBE_MODAL_HIDDEN_END -->
 
-<div class="modal-overlay" id="modal-platinum">
+<div class="modal-overlay" id="modal-contact">
   <div class="modal">
     <button class="close" onclick="closeModal()">×</button>
     <span class="word">ARIYA</span>
-    <h3>פנייה למסלול פלטינום</h3>
-    <p class="msub">כיסוי בלתי מוגבל בתמחור מוסדי פרטני. השאירו פרטים ונחזור אליכם.</p>
+    <h3>תיאום הדגמה</h3>
+    <p class="msub">השאירו פרטים ונחזור אליכם לתיאום הדגמה אישית של המערכת.</p>
     <div class="field"><label>שם מלא</label><input id="plat-name" type="text" placeholder="שם מלא"></div>
     <div class="field"><label>תפקיד</label><input id="plat-role" type="text" placeholder="לדוגמה: מנהל השקעות"></div>
     <div class="field"><label>גוף מוסדי</label><input id="plat-org" type="text" placeholder="שם הגוף"></div>
-    <div class="field"><label>דוא"ל ארגוני</label><input id="plat-email" type="email" placeholder="name@institution.com"></div>
+    <div class="field"><label>דוא"ל</label><input id="plat-email" type="email" placeholder="name@institution.com"></div>
     <div class="field"><label>טלפון</label><input id="plat-phone" type="tel" placeholder="טלפון ליצירת קשר"></div>
-    <button class="btn-primary" onclick="submitPlatinum()">שליחת פנייה</button>
-    <p class="legal">הפנייה נשלחת ישירות. נחזור אליכם בהקדם לתיאום היקף ותמחור.</p>
+    <button class="btn-primary" onclick="submitContact()">שליחת פנייה</button>
+    <p class="legal">הפנייה נשלחת ישירות אלינו. נחזור אליכם בהקדם.</p>
   </div>
 </div>
 
@@ -891,7 +901,7 @@ function val(id){ const el = document.getElementById(id); return el ? el.value.t
 
 function submitSubscribe(){
   const plan = document.getElementById('sub-plan').value;
-  if(plan.indexOf('פלטינום') !== -1){ closeModal(); openModal('platinum'); return; }
+  if(plan.indexOf('פלטינום') !== -1){ closeModal(); openModal('contact'); return; }
   // אם הוגדר קישור סליקה — מעבר לתשלום. אחרת, פנייה במייל עם פרטי הטופס.
   if(CHECKOUT_URL){ location.href = CHECKOUT_URL; return; }
   const subject = 'הרשמה למנוי ARIYA — ' + plan;
@@ -904,10 +914,10 @@ function submitSubscribe(){
   sendMail(subject, body);
 }
 
-function submitPlatinum(){
-  const subject = 'פנייה למסלול פלטינום — ARIYA';
+function submitContact(){
+  const subject = 'פנייה / תיאום הדגמה — ARIYA';
   const body =
-    'פנייה למסלול פלטינום' + '\n\n' +
+    'פנייה לתיאום הדגמה של ARIYA' + '\n\n' +
     'שם מלא: ' + val('plat-name') + '\n' +
     'תפקיד: ' + val('plat-role') + '\n' +
     'גוף מוסדי: ' + val('plat-org') + '\n' +
