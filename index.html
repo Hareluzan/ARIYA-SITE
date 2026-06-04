@@ -32,7 +32,7 @@
 }
 
 *{ margin:0; padding:0; box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
+html{ scroll-behavior:smooth; overflow-x:hidden; }
 body{
   background:
     radial-gradient(ellipse at 50% -8%, #181E2B 0%, var(--dark) 58%) fixed,
@@ -282,7 +282,7 @@ section{ padding:96px 0; position:relative; }
 .about-note p{ margin:0; color:var(--muted); font-size:.94rem; line-height:1.8; }
 
 /* ===================== AI COPILOT ===================== */
-#copilot{ position:relative; }
+#copilot{ position:relative; overflow:hidden; }
 .ai-glow{ position:absolute; top:8%; right:-5%; width:520px; height:420px; pointer-events:none; background:radial-gradient(ellipse at center, rgba(201,169,110,0.09), transparent 65%); }
 .ai-grid{ display:grid; grid-template-columns:0.92fr 1.08fr; gap:44px; align-items:center; }
 @media(max-width:920px){ .ai-grid{ grid-template-columns:1fr; gap:40px; } }
@@ -496,7 +496,8 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
       <a href="#portfolio">ניהול תיקים</a>
       <a href="#how">איך זה עובד</a>
       <a href="#faq">שאלות</a>
-      <a class="nav-cta" onclick="openModal('contact')">תיאום הדגמה</a>
+      <a onclick="openModal('contact')" style="cursor:pointer">תיאום הדגמה</a>
+      <a class="nav-cta" onclick="openApp()">כניסה למערכת</a>
     </div>
     <button class="menu-btn" id="menuBtn" aria-label="תפריט"><span></span><span></span><span></span></button>
   </div>
@@ -513,7 +514,7 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
         <p class="sub reveal in d2">ARIYA הופכת דוח כספי גולמי לציון אשראי, תמחור תיאורטי והתרעת מצוקה מוקדמת, תוך פחות מדקה. מנוע קנייני שנבנה לאנליסטים שמנהלים חוב קונצרני בקנה מידה מוסדי.</p>
         <div class="hero-cta-row reveal in d3">
           <button class="btn-primary" onclick="openModal('contact')">תיאום הדגמה</button>
-          <button class="btn-ghost" onclick="document.getElementById('copilot').scrollIntoView({behavior:'smooth'})">סיור ביכולות</button>
+          <button class="btn-ghost" onclick="openApp()">כניסה למערכת</button>
         </div>
         <div class="hero-stats reveal in d4">
           <div class="stat"><div class="n">20</div><div class="l">סקטורים ממופים</div></div>
@@ -840,7 +841,7 @@ PRICING_HIDDEN_END -->
       <p>נשמח להציג הדגמה אישית של המערכת על תיק לדוגמה, ולבחון יחד התאמה לצרכים שלכם.</p>
       <div class="hero-cta-row" style="justify-content:center; position:relative;">
         <button class="btn-primary" onclick="openModal('contact')">תיאום הדגמה</button>
-        <button class="btn-ghost" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">חזרה ליכולות</button>
+        <button class="btn-ghost" onclick="openApp()">כניסה למערכת</button>
       </div>
     </div>
   </div>
@@ -900,7 +901,7 @@ SUBSCRIBE_MODAL_HIDDEN_END -->
    CONTACT_EMAIL = כתובת לפניות (גיבוי mailto אם אין WEB3FORMS_KEY)               */
 const WEB3FORMS_KEY = "eb94f73a-628b-49fb-b738-c52263ff6b9b";  // Access Key מ-web3forms.com
 const CHECKOUT_URL  = "";                 // למשל: "https://buy.stripe.com/xxxx"
-const APP_URL       = "";                 // למשל: "https://ariya.streamlit.app"
+const APP_URL       = "https://ariya-app.streamlit.app/";  // עמוד המערכת החי
 const CONTACT_EMAIL = "harel141@gmail.com";
 
 document.getElementById('year').textContent = new Date().getFullYear();
@@ -937,6 +938,11 @@ document.querySelectorAll('.faq-q').forEach(q => {
 /* modals */
 /* שמירת תבנית מודאל הקשר כדי להחזיר טופס נקי אחרי שליחה מוצלחת */
 const _contactModalHTML = document.querySelector('#modal-contact .modal').innerHTML;
+
+function openApp(){
+  if(APP_URL){ window.open(APP_URL, '_blank', 'noopener'); }
+  else { openModal('contact'); }
+}
 
 function openModal(type){
   if(type === 'contact'){
