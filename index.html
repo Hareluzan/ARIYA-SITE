@@ -463,6 +463,17 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
 .field input:focus, .field select:focus{ outline:none; border-color:var(--gold); box-shadow:0 0 0 1px var(--gold); }
 .modal .btn-primary{ width:100%; margin-top:8px; }
 .modal .legal{ font-size:.72rem; color:var(--muted-dim); text-align:center; margin-top:16px; line-height:1.5; }
+.form-result{ text-align:center; font-size:.9rem; margin-top:12px; min-height:0; transition:all .2s ease; }
+.form-result.show{ min-height:20px; }
+.form-result.ok{ color:var(--green); }
+.form-result.err{ color:var(--red); }
+.form-result.pending{ color:var(--muted); }
+.btn-primary[disabled]{ opacity:.6; cursor:default; filter:none; transform:none; }
+.modal-success{ text-align:center; padding:14px 0 4px; }
+.modal-success .chk{ width:54px; height:54px; border-radius:50%; border:2px solid var(--green); display:grid; place-items:center; margin:0 auto 16px; }
+.modal-success .chk svg{ width:26px; height:26px; stroke:var(--green); fill:none; stroke-width:2.4; }
+.modal-success h3{ color:var(--cream); }
+.modal-success p{ color:var(--muted); font-size:.95rem; margin-top:8px; }
 
 /* reveal animation */
 .reveal{ opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s ease; }
@@ -875,16 +886,19 @@ SUBSCRIBE_MODAL_HIDDEN_END -->
     <div class="field"><label>גוף מוסדי</label><input id="plat-org" type="text" placeholder="שם הגוף"></div>
     <div class="field"><label>דוא"ל</label><input id="plat-email" type="email" placeholder="name@institution.com"></div>
     <div class="field"><label>טלפון</label><input id="plat-phone" type="tel" placeholder="טלפון ליצירת קשר"></div>
-    <button class="btn-primary" onclick="submitContact()">שליחת פנייה</button>
+    <button id="contact-btn" class="btn-primary" onclick="submitContact()">שליחת פנייה</button>
+    <p id="contact-result" class="form-result"></p>
     <p class="legal">הפנייה נשלחת ישירות אלינו. נחזור אליכם בהקדם.</p>
   </div>
 </div>
 
 <script>
 /* ====== CONFIG — Harel: drop your real links here ======
+   WEB3FORMS_KEY = מפתח Web3Forms (להפעלת שליחה מתוך הדף, ללא יציאה למייל)
    CHECKOUT_URL  = קישור תשלום (Stripe / Paddle / סליקה ישראלית)
    APP_URL       = כתובת אפליקציית ARIYA (Streamlit) שאליה מפנים אחרי תשלום מוצלח
-   CONTACT_EMAIL = כתובת לפניות מסלול פלטינום (mailto)                          */
+   CONTACT_EMAIL = כתובת לפניות (גיבוי mailto אם אין WEB3FORMS_KEY)               */
+const WEB3FORMS_KEY = "";                 // הדבק כאן את ה-Access Key מ-web3forms.com
 const CHECKOUT_URL  = "";                 // למשל: "https://buy.stripe.com/xxxx"
 const APP_URL       = "";                 // למשל: "https://ariya.streamlit.app"
 const CONTACT_EMAIL = "harel141@gmail.com";
@@ -921,7 +935,13 @@ document.querySelectorAll('.faq-q').forEach(q => {
 });
 
 /* modals */
+/* שמירת תבנית מודאל הקשר כדי להחזיר טופס נקי אחרי שליחה מוצלחת */
+const _contactModalHTML = document.querySelector('#modal-contact .modal').innerHTML;
+
 function openModal(type){
+  if(type === 'contact'){
+    document.querySelector('#modal-contact .modal').innerHTML = _contactModalHTML;
+  }
   document.getElementById('modal-' + type).classList.add('show');
   document.body.style.overflow = 'hidden';
 }
@@ -951,17 +971,75 @@ function submitSubscribe(){
   sendMail(subject, body);
 }
 
-function submitContact(){
-  const subject = 'פנייה / תיאום הדגמה — ARIYA';
-  const body =
-    'פנייה לתיאום הדגמה של ARIYA' + '\n\n' +
-    'שם מלא: ' + val('plat-name') + '\n' +
-    'תפקיד: ' + val('plat-role') + '\n' +
-    'גוף מוסדי: ' + val('plat-org') + '\n' +
-    'דוא"ל: ' + val('plat-email') + '\n' +
-    'טלפון: ' + val('plat-phone');
-  sendMail(subject, body);
+async function submitContact(){
+  const name = val('plat-name'), email = val('plat-email'), phone = val('plat-phone');
+  const result = document.getElementById('contact-result');
+  const btn = document.getElementById('contact-btn');
+
+  // ולידציה בסיסית
+  if(!name || (!email && !phone)){
+    showResult(result, 'נא למלא שם ולפחות דרך התקשרות אחת (דוא"ל או טלפון).', 'err');
+    return;
+  }
+
+  // אם לא הוגדר מפתח Web3Forms — נפילה חזרה ל-mailto
+  if(!WEB3FORMS_KEY){
+    const body =
+      'פנייה לתיאום הדגמה של ARIYA' + '\n\n' +
+      'שם מלא: ' + name + '\n' +
+      'תפקיד: ' + val('plat-role') + '\n' +
+      'גוף מוסדי: ' + val('plat-org') + '\n' +
+      'דוא"ל: ' + email + '\n' +
+      'טלפון: ' + phone;
+    sendMail('פנייה / תיאום הדגמה — ARIYA', body);
+    return;
+  }
+
+  // שליחה מתוך הדף דרך Web3Forms
+  btn.disabled = true;
+  showResult(result, 'שולח...', 'pending');
+  try{
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json', 'Accept':'application/json' },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        subject: 'פנייה / תיאום הדגמה — ARIYA',
+        from_name: 'אתר ARIYA',
+        name: name,
+        תפקיד: val('plat-role'),
+        'גוף מוסדי': val('plat-org'),
+        email: email,
+        טלפון: phone
+      })
+    });
+    const data = await res.json();
+    if(data.success){ contactSuccess(); }
+    else{ showResult(result, 'אירעה תקלה בשליחה. נסו שוב או פנו ישירות במייל.', 'err'); btn.disabled = false; }
+  }catch(e){
+    showResult(result, 'אין חיבור כרגע. נסו שוב או פנו ישירות במייל.', 'err');
+    btn.disabled = false;
+  }
 }
+
+function showResult(el, msg, type){
+  el.textContent = msg;
+  el.className = 'form-result show ' + type;
+}
+
+function contactSuccess(){
+  const modal = document.querySelector('#modal-contact .modal');
+  modal.innerHTML =
+    '<button class="close" onclick="closeModal()">\u00d7</button>' +
+    '<span class="word">ARIYA</span>' +
+    '<div class="modal-success">' +
+      '<div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>' +
+      '<h3>הפנייה נשלחה</h3>' +
+      '<p>תודה. קיבלנו את הפרטים ונחזור אליכם בהקדם לתיאום הדגמה.</p>' +
+    '</div>';
+}
+
+function submitContactReset(){ /* reserved */ }
 
 function sendMail(subject, body){
   const url = 'mailto:' + CONTACT_EMAIL +
