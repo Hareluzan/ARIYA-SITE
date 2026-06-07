@@ -323,6 +323,34 @@ section{ padding:96px 0; position:relative; }
 .typing i:nth-child(2){ animation-delay:.2s; } .typing i:nth-child(3){ animation-delay:.4s; }
 @keyframes blink{ 0%,60%,100%{ opacity:.25; } 30%{ opacity:1; } }
 
+/* ===================== SURVEILLANCE & ALERTS ===================== */
+#surveillance{ position:relative; overflow:hidden; }
+.surv-glow{ position:absolute; top:6%; left:-6%; width:480px; height:400px; pointer-events:none; background:radial-gradient(ellipse at center, rgba(199,93,82,0.08), transparent 65%); }
+.surv-grid{ display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:center; }
+@media(max-width:920px){ .surv-grid{ grid-template-columns:1fr; gap:40px; } }
+.alert-feed{ display:flex; flex-direction:column; gap:13px; }
+.alert-feed-head{ display:flex; align-items:center; gap:11px; padding-bottom:14px; border-bottom:1px solid var(--border-subtle); margin-bottom:4px; }
+.alert-feed-head .orb{ width:34px; height:34px; border-radius:9px; background:radial-gradient(circle at 35% 30%, var(--gold-light), var(--gold-dark)); display:grid; place-items:center; }
+.alert-feed-head .orb span{ font-family:var(--font-wordmark); color:#0B0E14; font-size:.7rem; font-weight:700; }
+.alert-feed-head .ttl{ font-family:var(--font-display); color:var(--cream); font-size:.92rem; }
+.alert-feed-head .sub{ font-size:.68rem; color:var(--muted); }
+.alert-feed-head .chan{ margin-right:auto; font-size:.64rem; color:var(--blue); border:1px solid rgba(91,138,166,0.4); border-radius:20px; padding:3px 10px; direction:ltr; }
+.alert{ background:linear-gradient(160deg, var(--panel-elevated), var(--panel)); border:1px solid var(--border-subtle); border-right:3px solid var(--red); border-radius:12px; padding:14px 16px; box-shadow:var(--shadow-sm); }
+.alert.warn{ border-right-color:var(--amber); }
+.alert-top{ display:flex; justify-content:space-between; align-items:center; margin-bottom:9px; }
+.alert-top .src{ display:flex; align-items:center; gap:8px; font-size:.74rem; color:var(--cream-dim); }
+.alert-dot{ width:8px; height:8px; border-radius:50%; background:var(--red); box-shadow:0 0 9px var(--red); animation:pulseDot 1.8s infinite; }
+.alert.warn .alert-dot{ background:var(--amber); box-shadow:0 0 9px var(--amber); }
+@keyframes pulseDot{ 0%,100%{ opacity:1; } 50%{ opacity:.35; } }
+.alert-top .tm{ font-size:.64rem; color:var(--muted-dim); direction:ltr; }
+.alert-title{ color:var(--cream); font-size:.92rem; line-height:1.5; margin-bottom:9px; }
+.alert-title b{ color:var(--gold); font-weight:500; }
+.alert-chips{ display:flex; gap:7px; flex-wrap:wrap; }
+.alert-chips .chip{ font-size:.68rem; padding:3px 10px; border-radius:20px; direction:ltr; border:1px solid; }
+.chip.red{ color:var(--red); border-color:rgba(199,93,82,0.5); background:rgba(199,93,82,0.08); }
+.chip.amber{ color:var(--amber); border-color:rgba(217,162,74,0.5); background:rgba(217,162,74,0.08); }
+.chip.muted{ color:var(--muted); border-color:var(--border-subtle); }
+
 /* ===================== PORTFOLIO ===================== */
 #portfolio{ background:linear-gradient(180deg, transparent, rgba(255,255,255,0.012)); }
 .pf-grid{ display:grid; grid-template-columns:1fr 1fr; gap:30px; align-items:center; }
@@ -494,6 +522,7 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
       <a href="#copilot">עוזר AI</a>
       <a href="#features">יכולות</a>
       <a href="#portfolio">ניהול תיקים</a>
+      <a href="#surveillance">התראות</a>
       <a href="#how">איך זה עובד</a>
       <a href="#faq">שאלות</a>
       <a onclick="openModal('contact')" style="cursor:pointer">תיאום הדגמה</a>
@@ -509,7 +538,7 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <div class="hero-pill reveal in"><span class="dot"></span> מנוע ניתוח אשראי קנייני · עם עוזר AI מובנה</div>
+        <div class="hero-pill reveal in"><span class="dot"></span> ניתוח אשראי קנייני · עוזר AI · התראות בזמן אמת</div>
         <h1 class="reveal in d1">ניתוח אשראי ותמחור אג"ח<br><span class="accent">ברמת דסק מוסדי.</span></h1>
         <p class="sub reveal in d2">ARIYA הופכת דוח כספי גולמי לציון אשראי, תמחור תיאורטי והתרעת מצוקה מוקדמת, תוך פחות מדקה. מנוע קנייני שנבנה לאנליסטים שמנהלים חוב קונצרני בקנה מידה מוסדי.</p>
         <div class="hero-cta-row reveal in d3">
@@ -654,7 +683,7 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
       <div class="feat reveal d2"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div><h3>הון בנקאי ו-CoCo</h3><p>טיפול ייעודי ב-AT1 ו-Tier 2, מרחק מטריגר CET1 ועונש מבני לפי דרגת הנחיתות, בהתאם לנב"ת 202.</p></div>
       <div class="feat reveal"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9v6a3 3 0 003 3h6"/></svg></div><h3>חשיפה צולבת</h3><p>סריקת כל התיקים בו זמנית כדי לחשוף את החשיפה הכוללת לאותו מנפיק, ממוינת לפי משקל בכל תיק.</p></div>
       <div class="feat reveal d1"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2l9 4.5v5C21 17 17 21 12 23 7 21 3 17 3 11.5v-5z"/></svg></div><h3>דיסוננס דירוג-שוק</h3><p>זיהוי פער בין הדירוג הרשמי, הדירוג שהשוק מתמחר, וההערכה של המודל. אזהרה מוקדמת לפני שהשוק מתעורר.</p></div>
-      <div class="feat reveal d2"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 16v-5M12 16V8M16 16v-9"/></svg></div><h3>מנוע ניטור</h3><p>צילום מצב תקופתי של התיק, מעקב אחר האצת מרווחים וקליטת דיווחי MAYA חיים בעמוד המצוקה.</p></div>
+      <div class="feat reveal d2"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 16v-5M12 16V8M16 16v-9"/></svg></div><h3>ניטור והתראות בזמן אמת</h3><p>מעקב רציף אחר התיק, זיהוי פתיחת מרווח חדה ודיווחי מאיה מהותיים, והתראה שמגיעה ישירות לטלגרם או לדסק ברגע שמשהו חורג.</p></div>
       <div class="feat reveal"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></div><h3>מבט-על מצרפי</h3><p>לוח בקרה שמרכז את כל מדדי הסיכון של התיק במסך אחד: ציון משוקלל, פיזור, תשואה ממוצעת וטיקר חי של האחזקות.</p></div>
       <div class="feat reveal d1"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>בקרת השקעות</h3><p>הגדרת מגבלות השקעה והתרעה על חריגה: תקרת מח"מ, חשיפה ל-High Yield, משקל מקסימלי לסקטור ולמנפיק יחיד וציון סיכון משוקלל.</p></div>
       <div class="feat reveal d2"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 12h3l3 7 4-14 3 7h5"/></svg></div><h3>בחינות לחץ</h3><p>תרחישי קיצון ברמת האג"ח הבודדת וברמת התיק כולו, לבחינת עמידות מול זעזועי ריבית, מרווח ואשראי.</p></div>
@@ -733,6 +762,56 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
   </div>
 </section>
 
+<!-- ===================== SURVEILLANCE & ALERTS ===================== -->
+<section id="surveillance">
+  <div class="surv-glow"></div>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Real-Time Surveillance</div>
+      <div class="section-title">שומרת על התיק, גם כשאתה לא מול המסך</div>
+      <p class="section-lead">ARIYA לא מחכה שתפתח אותה. מנוע ניטור אוטונומי רץ ברקע 24/7, מזהה פתיחת מרווח חדה, אירוע חריג ספציפי לנייר ודיווח מהותי, ושולח התראה ישירות לטלגרם או לקבוצת חדר המסחר ברגע שמשהו חורג, גם כשאיש לא מול המסך.</p>
+    </div>
+    <div class="surv-grid">
+      <!-- bullets -->
+      <div>
+        <div class="pf-feats" style="margin-top:0;">
+          <div class="pf-feat reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7c0 5-2 6-2 6h18s-2-1-2-6a7 7 0 00-7-7z"/><path d="M10 21a2 2 0 004 0"/></svg></div><div><h3>זיהוי אירוע חריג בזמן אמת</h3><p>פתיחת מרווח חדה, חריגה ביחס לשוק או דיווח מהותי, מסומנים ברגע שהם קורים ולא בדיעבד.</p></div></div>
+          <div class="pf-feat reveal d1"><div class="ico"><svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></div><div><h3>התראות לטלגרם ולדסק</h3><p>ההתראה מגיעה ישירות לנייד או לקבוצת חדר המסחר ברגע האירוע, לא דורשת שמישהו יהיה מול המערכת.</p></div></div>
+          <div class="pf-feat reveal d2"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div><h3>ניטור אוטונומי 24/7</h3><p>מנוע שרץ ברקע סביב השעון, מושך נתונים ודיווחים שוטפים ומתריע גם כשאף אחד לא מול המערכת.</p></div></div>
+          <div class="pf-feat reveal d3"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 4 8-8"/><path d="M21 8v5h-5"/></svg></div><div><h3>מד מצוקה חי ו-Drift</h3><p>המרווח, התשואה והציון מתעדכנים מול נתוני שוק חיים, בלי לדרוס את ניתוח הפונדמנטל: "נכון לניתוח" מול "נכון לעכשיו".</p></div></div>
+        </div>
+      </div>
+
+      <!-- alert feed mock -->
+      <div class="alert-feed reveal d1">
+        <div class="alert-feed-head">
+          <div class="orb"><span>A</span></div>
+          <div>
+            <div class="ttl">ARIYA · התראות שוק</div>
+            <div class="sub">ניטור 24/7 · 14 אחזקות</div>
+          </div>
+          <span class="chan">Telegram</span>
+        </div>
+        <div class="alert">
+          <div class="alert-top"><span class="src"><span class="alert-dot"></span> התראת שוק · מצוקה</span><span class="tm">09:42</span></div>
+          <div class="alert-title"><b>פסיפיק</b> · פתיחת מרווח חדה, חריגה משמעותית ביחס לשוק</div>
+          <div class="alert-chips"><span class="chip red">+460bp</span><span class="chip red">חריגה מהשוק</span><span class="chip muted">משקל 3.4%</span></div>
+        </div>
+        <div class="alert">
+          <div class="alert-top"><span class="src"><span class="alert-dot"></span> דיווח מהותי · קריטי</span><span class="tm">11:18</span></div>
+          <div class="alert-title"><b>אפיון נדל"ן</b> · זוהה דיווח מאיה: משיכת כספים על ידי בעל השליטה</div>
+          <div class="alert-chips"><span class="chip red">איתות קשה</span><span class="chip muted">לבחינה מיידית</span></div>
+        </div>
+        <div class="alert warn">
+          <div class="alert-top"><span class="src"><span class="alert-dot"></span> מגמת מרווח · לבחינה</span><span class="tm">13:05</span></div>
+          <div class="alert-title"><b>אופיסי</b> · התרחבות מרווח מתמשכת מעל הסקטור</div>
+          <div class="alert-chips"><span class="chip amber">+120bp</span><span class="chip muted">7 ימים</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== HOW IT WORKS ===================== -->
 <section id="how">
   <div class="wrap">
@@ -744,7 +823,7 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
       <div class="step reveal"><div class="num">1</div><h3>הזנה</h3><p>העלאת דוח כספי, קובץ MAGNA, או בחירת מנפיק ממופה. המערכת מזהה סקטור ויחידות לבד.</p></div>
       <div class="step reveal d1"><div class="num">2</div><h3>ניתוח</h3><p>מנוע הדירוג מחשב ציון סיכון, מינוף, כיסוי ריבית, ומפיק דירוג משתמע בשניות.</p></div>
       <div class="step reveal d2"><div class="num">3</div><h3>תמחור</h3><p>השוואת שווי תיאורטי מול מחיר שוק, חישוב תשואה ריאלית והערכת מרווח מול הסיכון.</p></div>
-      <div class="step reveal d3"><div class="num">4</div><h3>ניטור</h3><p>הבונד נכנס לתיק ולמד המצוקה, עם מעקב שוטף אחר שינויים, מרווחים ודיווחים.</p></div>
+      <div class="step reveal d3"><div class="num">4</div><h3>ניטור והתראה</h3><p>הבונד נכנס לתיק ולמד המצוקה, עם מעקב שוטף, וכשמשהו חורג מהשוק יוצאת התראה ישירות אליך.</p></div>
     </div>
   </div>
 </section>
@@ -902,7 +981,7 @@ SUBSCRIBE_MODAL_HIDDEN_END -->
 const WEB3FORMS_KEY = "eb94f73a-628b-49fb-b738-c52263ff6b9b";  // Access Key מ-web3forms.com
 const CHECKOUT_URL  = "";                 // למשל: "https://buy.stripe.com/xxxx"
 const APP_URL       = "https://ariya-app.streamlit.app/";  // עמוד המערכת החי
-const CONTACT_EMAIL = "harel141@gmail.com";
+const CONTACT_EMAIL = "";                 // לא נחוץ כש-WEB3FORMS_KEY מוגדר (מונע איסוף ספאם)
 
 document.getElementById('year').textContent = new Date().getFullYear();
 
