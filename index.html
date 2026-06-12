@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ARIYA · ניתוח אשראי ותמחור אג"ח למשקיעים מוסדיים</title>
-<meta name="description" content="ARIYA: פלטפורמת ניתוח אשראי, תמחור וניטור אג&quot;ח קונצרניות למשקיעים מוסדיים. דירוג פנימי, מד מצוקה, ניטור 24/7 והתראות בזמן אמת לטלגרם.">
+<meta name="description" content="ARIYA: פלטפורמת ניתוח אשראי, תמחור וניטור אג&quot;ח קונצרניות למשקיעים מוסדיים. דירוג פנימי, סימולטור הסדרי חוב, מד מצוקה, ניטור 24/7 והתראות בזמן אמת לטלגרם.">
 <meta name="theme-color" content="#0A0D13">
 <meta property="og:site_name" content="ARIYA">
 <meta property="og:title" content="ARIYA · ניתוח אשראי ותמחור אג&quot;ח למשקיעים מוסדיים">
-<meta property="og:description" content="דירוג פנימי, תמחור, מד מצוקה, ניטור 24/7 והתראות בזמן אמת. תשתית אשראי מוסדית לשוק הישראלי.">
+<meta property="og:description" content="דירוג פנימי, תמחור, סימולטור הסדרי חוב, מד מצוקה, ניטור 24/7 והתראות בזמן אמת. תשתית אשראי מוסדית לשוק הישראלי.">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A0D13'/%3E%3Ctext x='16' y='22.5' font-family='Georgia,serif' font-size='17' fill='%23C9A96E' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -72,6 +72,10 @@ a{ color:inherit; text-decoration:none; }
 .section-title{
   font-family:var(--font-display); font-weight:500; color:var(--cream);
   font-size:clamp(1.7rem,3.4vw,2.5rem); line-height:1.2; margin-top:10px;
+}
+.section-head .section-title::after{
+  content:""; display:block; width:46px; height:2px; margin:18px auto 0;
+  background:linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 .section-lead{ color:var(--muted); max-width:640px; margin-top:14px; font-size:1.02rem; }
 
@@ -257,7 +261,9 @@ section{ padding:96px 0; position:relative; }
 .feat .ico{
   width:42px; height:42px; border-radius:10px; display:grid; place-items:center;
   background:rgba(201,169,110,0.08); border:1px solid var(--border-subtle); margin-bottom:16px;
+  transition:box-shadow .3s ease, border-color .3s ease;
 }
+.feat:hover .ico{ box-shadow:0 0 14px rgba(201,169,110,0.25); border-color:var(--border); }
 .feat .ico svg{ width:20px; height:20px; stroke:var(--gold); fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
 .feat h3{ font-family:var(--font-display); font-weight:500; color:var(--cream); font-size:1.08rem; margin-bottom:9px; }
 .feat p{ color:var(--muted); font-size:.92rem; }
@@ -286,6 +292,46 @@ section{ padding:96px 0; position:relative; }
 .about-contrast p{ margin:0; color:var(--cream); font-size:1.08rem; line-height:1.85; }
 .about-note{ margin-top:26px; border:1px solid var(--border-subtle); border-radius:12px; padding:18px 24px; background:rgba(255,255,255,0.015); }
 .about-note p{ margin:0; color:var(--muted); font-size:.94rem; line-height:1.8; }
+
+/* ===================== RESTRUCTURING (NEW) ===================== */
+#restructuring{ position:relative; overflow:hidden; }
+.rst-glow{ position:absolute; top:4%; left:-6%; width:520px; height:430px; pointer-events:none; background:radial-gradient(ellipse at center, rgba(201,169,110,0.10), transparent 65%); }
+#restructuring .grid-bg{
+  position:absolute; inset:0; pointer-events:none; opacity:.05;
+  background-image:linear-gradient(var(--gold) 1px, transparent 1px), linear-gradient(90deg, var(--gold) 1px, transparent 1px);
+  background-size:44px 44px;
+  -webkit-mask-image:radial-gradient(ellipse at 30% 40%, #000 0%, transparent 70%);
+  mask-image:radial-gradient(ellipse at 30% 40%, #000 0%, transparent 70%);
+}
+.rst-grid{ display:grid; grid-template-columns:0.95fr 1.05fr; gap:44px; align-items:center; }
+@media(max-width:920px){ .rst-grid{ grid-template-columns:1fr; gap:40px; } }
+.rst-mock{
+  background:linear-gradient(135deg, var(--panel-elevated), #080B11);
+  border:1px solid var(--border); border-radius:16px; padding:22px;
+  box-shadow:var(--shadow-md), inset 0 1px 0 rgba(255,255,255,0.03); position:relative; overflow:hidden;
+}
+.rst-mock::after{ content:""; position:absolute; top:-35%; right:-15%; width:240px; height:240px; background:radial-gradient(circle, rgba(201,169,110,0.10), transparent 70%); pointer-events:none; }
+.rst-tabs{ display:flex; gap:4px; border-bottom:1px solid var(--border-subtle); margin-bottom:18px; }
+.rst-tab{ padding:8px 16px; font-size:.8rem; color:var(--muted); border-bottom:2px solid transparent; }
+.rst-tab.on{ color:var(--gold); border-bottom-color:var(--gold); font-weight:500; }
+.wf-label{ display:flex; justify-content:space-between; font-size:.7rem; color:var(--muted); margin-bottom:8px; }
+.wf-track{ display:flex; height:40px; border-radius:9px; overflow:hidden; border:1px solid var(--border-subtle); direction:ltr; }
+.wf-seg{ display:grid; place-items:center; font-size:.64rem; letter-spacing:.02em; direction:rtl; white-space:nowrap; overflow:hidden;
+  opacity:0; transform:scaleX(.7); transform-origin:left; transition:opacity .55s ease, transform .55s ease; }
+.wf.go .wf-seg{ opacity:1; transform:none; }
+.wf-seg.bond{ background:linear-gradient(135deg, var(--gold-light), var(--gold-dark)); color:#0B0E14; font-weight:600; }
+.wf-seg.eq{ background:rgba(201,169,110,0.16); color:var(--cream); border-inline:1px solid var(--border-subtle); }
+.wf-seg.cut{ background:repeating-linear-gradient(45deg, rgba(255,255,255,0.03), rgba(255,255,255,0.03) 6px, transparent 6px, transparent 12px); color:var(--muted); }
+.rst-kpis{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:16px; }
+.rst-kpis .tile .tv.up{ color:var(--green); }
+.rst-mini{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px; }
+.rst-chips{ display:flex; gap:7px; flex-wrap:wrap; margin-top:14px; }
+.rst-chips .chip{ font-size:.68rem; padding:3px 10px; border-radius:20px; border:1px solid var(--border-subtle); color:var(--cream-dim); background:rgba(255,255,255,0.02); }
+.rst-read{
+  margin-top:14px; padding:11px 14px; border-right:3px solid var(--gold); border-radius:8px;
+  background:rgba(201,169,110,0.06); color:var(--cream); font-size:.84rem; line-height:1.6;
+}
+.rst-read b{ color:var(--gold); font-weight:500; }
 
 /* ===================== AI COPILOT ===================== */
 #copilot{ position:relative; overflow:hidden; }
@@ -620,7 +666,7 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
 /* reduced motion: accessibility + projector safety */
 @media (prefers-reduced-motion:reduce){
   *{ animation:none !important; transition:none !important; }
-  .chat .msg, .alert, .heat .cell, .reveal{ opacity:1 !important; transform:none !important; }
+  .chat .msg, .alert, .heat .cell, .wf-seg, .reveal{ opacity:1 !important; transform:none !important; }
 }
 
 /* reveal animation */
@@ -642,6 +688,7 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
     <div class="nav-links" id="navLinks">
       <a href="#how">איך זה עובד</a>
       <a href="#features">יכולות</a>
+      <a href="#restructuring">הסדרי חוב</a>
       <a href="#portfolio">ניהול תיקים</a>
       <a href="#surveillance">התראות</a>
       <a href="#copilot">עוזר AI</a>
@@ -658,13 +705,13 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
 <header class="hero">
   <div class="hero-glow"></div>
   <canvas id="heroNet" aria-hidden="true"></canvas>
-  <div class="ticker" aria-hidden="true"><div class="ticker-track"><span class="ti"><span class="tn">תדר תקשורת ו'</span><span class="v g">1.68</span><span class="g">IG ▲</span></span><span class="ti"><span class="tn">רקיע נדל"ן ג'</span><span class="v g">2.41</span><span class="g">IG</span></span><span class="ti"><span class="tn">אופק ים ייזום ב'</span><span class="v a">3.10</span><span class="a">לבחינה</span><span class="v a">+120bp</span></span><span class="ti"><span class="tn">נורד אטלנטיק א'</span><span class="v r">4.55</span><span class="r">מצוקה</span><span class="v r">+460bp</span></span><span class="ti"><span class="ld r"></span><span class="tn">א.ל.מ אחזקות</span><span class="r">דיווח מהותי</span></span><span class="ti"><span class="tn">מרווח תיק ממוצע</span><span class="v gd">148bp</span></span><span class="ti"><span class="tn">ציון תיק משוקלל</span><span class="v gd">2.21</span></span><span class="ti"><span class="ld g"></span><span class="tn">ניטור</span><span class="g">24/7 פעיל</span></span><span class="ti"><span class="tn">הדמיה · נתונים בדויים</span></span><span class="ti"><span class="tn">תדר תקשורת ו'</span><span class="v g">1.68</span><span class="g">IG ▲</span></span><span class="ti"><span class="tn">רקיע נדל"ן ג'</span><span class="v g">2.41</span><span class="g">IG</span></span><span class="ti"><span class="tn">אופק ים ייזום ב'</span><span class="v a">3.10</span><span class="a">לבחינה</span><span class="v a">+120bp</span></span><span class="ti"><span class="tn">נורד אטלנטיק א'</span><span class="v r">4.55</span><span class="r">מצוקה</span><span class="v r">+460bp</span></span><span class="ti"><span class="ld r"></span><span class="tn">א.ל.מ אחזקות</span><span class="r">דיווח מהותי</span></span><span class="ti"><span class="tn">מרווח תיק ממוצע</span><span class="v gd">148bp</span></span><span class="ti"><span class="tn">ציון תיק משוקלל</span><span class="v gd">2.21</span></span><span class="ti"><span class="ld g"></span><span class="tn">ניטור</span><span class="g">24/7 פעיל</span></span><span class="ti"><span class="tn">הדמיה · נתונים בדויים</span></span></div></div>
+  <div class="ticker" aria-hidden="true"><div class="ticker-track"><span class="ti"><span class="tn">תדר תקשורת ו'</span><span class="v g">1.68</span><span class="g">IG ▲</span></span><span class="ti"><span class="tn">רקיע נדל"ן ג'</span><span class="v g">2.41</span><span class="g">IG</span></span><span class="ti"><span class="tn">אופק ים ייזום ב'</span><span class="v a">3.10</span><span class="a">לבחינה</span><span class="v a">+120bp</span></span><span class="ti"><span class="tn">נורד אטלנטיק א'</span><span class="v r">4.55</span><span class="r">מצוקה</span><span class="v r">+460bp</span></span><span class="ti"><span class="ld r"></span><span class="tn">א.ל.מ אחזקות</span><span class="r">דיווח מהותי</span></span><span class="ti"><span class="tn">סימולטור הסדר · נורד אטלנטיק</span><span class="tn">חבילה</span><span class="v gd">47.9</span><span class="tn">מול שוק</span><span class="v">41.8</span><span class="g">▲</span></span><span class="ti"><span class="tn">מרווח תיק ממוצע</span><span class="v gd">148bp</span></span><span class="ti"><span class="tn">ציון תיק משוקלל</span><span class="v gd">2.21</span></span><span class="ti"><span class="ld g"></span><span class="tn">ניטור</span><span class="g">24/7 פעיל</span></span><span class="ti"><span class="tn">הדמיה · נתונים בדויים</span></span><span class="ti"><span class="tn">תדר תקשורת ו'</span><span class="v g">1.68</span><span class="g">IG ▲</span></span><span class="ti"><span class="tn">רקיע נדל"ן ג'</span><span class="v g">2.41</span><span class="g">IG</span></span><span class="ti"><span class="tn">אופק ים ייזום ב'</span><span class="v a">3.10</span><span class="a">לבחינה</span><span class="v a">+120bp</span></span><span class="ti"><span class="tn">נורד אטלנטיק א'</span><span class="v r">4.55</span><span class="r">מצוקה</span><span class="v r">+460bp</span></span><span class="ti"><span class="ld r"></span><span class="tn">א.ל.מ אחזקות</span><span class="r">דיווח מהותי</span></span><span class="ti"><span class="tn">סימולטור הסדר · נורד אטלנטיק</span><span class="tn">חבילה</span><span class="v gd">47.9</span><span class="tn">מול שוק</span><span class="v">41.8</span><span class="g">▲</span></span><span class="ti"><span class="tn">מרווח תיק ממוצע</span><span class="v gd">148bp</span></span><span class="ti"><span class="tn">ציון תיק משוקלל</span><span class="v gd">2.21</span></span><span class="ti"><span class="ld g"></span><span class="tn">ניטור</span><span class="g">24/7 פעיל</span></span><span class="ti"><span class="tn">הדמיה · נתונים בדויים</span></span></div></div>
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <div class="hero-pill reveal in"><span class="dot"></span> ניתוח אשראי קנייני · עוזר AI · התראות בזמן אמת</div>
+        <div class="hero-pill reveal in"><span class="dot"></span> ניתוח אשראי קנייני · הסדרי חוב · התראות בזמן אמת</div>
         <h1 class="reveal in d1">ניתוח אשראי ותמחור אג"ח<br><span class="accent">ברמת דסק מוסדי.</span></h1>
-        <p class="sub reveal in d2">ARIYA הופכת דוח כספי גולמי לציון אשראי, לתמחור תיאורטי ולהתרעת מצוקה מוקדמת, בתוך פחות מדקה. מנוע קנייני שנבנה לאנליסטים שמנהלים חוב קונצרני בקנה מידה מוסדי.</p>
+        <p class="sub reveal in d2">ARIYA הופכת דוח כספי גולמי לציון אשראי, לתמחור תיאורטי ולהתרעת מצוקה מוקדמת, בתוך פחות מדקה, וכשנייר נכנס להסדר, היא מתמחרת גם את חבילת ההסדר עצמה. מנוע קנייני שנבנה לאנליסטים שמנהלים חוב קונצרני בקנה מידה מוסדי.</p>
         <div class="hero-cta-row reveal in d3">
           <button class="btn-primary" onclick="openModal('contact')">תיאום הדגמה</button>
           <button class="btn-ghost" onclick="openApp()">כניסה למערכת</button>
@@ -673,6 +720,7 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
           <div class="stat"><div class="n" data-count="20">20</div><div class="l">סקטורים ממופים</div></div>
           <div class="stat"><div class="n" data-count="239">239</div><div class="l">מנפיקים בישראל</div></div>
           <div class="stat"><div class="n" data-count="60" data-prefix="&lt;" data-suffix="s">&lt;60s</div><div class="l">פחות מדקה מדוח לציון</div></div>
+          <div class="stat"><div class="n" data-count="1300" data-suffix="+">1300+</div><div class="l">בדיקות אוטומטיות על המנוע</div></div>
         </div>
       </div>
 
@@ -742,7 +790,7 @@ footer .fdisc{ color:var(--muted-dim); font-size:.68rem; max-width:640px; margin
     </div>
     <div class="about-wrap">
       <p class="lead reveal"><b>ARIYA</b> היא פלטפורמת ניתוח אשראי וניטור סיכונים באג"ח קונצרניות, המותאמת לשוק הישראלי ולצרכים של משקיעים מוסדיים.</p>
-      <p class="reveal d1">המערכת מרכזת את תהליך העבודה במקום אחד: חילוץ נתונים מדוחות כספיים, חישוב יחסי אשראי, דירוג פנימי, תמחור אג"ח, ניטור קובננטים, זיהוי פערים מול תמחור השוק ומעקב אחר רמת הסיכון בתיק.</p>
+      <p class="reveal d1">המערכת מרכזת את תהליך העבודה במקום אחד: חילוץ נתונים מדוחות כספיים, חישוב יחסי אשראי, דירוג פנימי, תמחור אג"ח, ניטור קובננטים, תמחור הסדרי חוב, זיהוי פערים מול תמחור השוק ומעקב אחר רמת הסיכון בתיק.</p>
       <div class="about-contrast reveal d2">
         <p>במקום עבודה מפוזרת בין גיליונות אקסל, דוחות PDF ודיווחים שוטפים, ARIYA מאפשרת לאנליסט ולמנהל ההשקעות לקבל תמונת אשראי אחידה, עקבית וניתנת לבקרה.</p>
       </div>
@@ -846,13 +894,13 @@ PRICING_HIDDEN_END -->
     <div class="feat-grid">
       <div class="feat reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 4 8-8"/><path d="M21 8v5h-5"/></svg></div><h3>דירוג אשראי קנייני</h3><p>ציון סיכון 1 עד 5 הממופה לדירוג מקומי (il), בעקרונות מתודולוגיה של מעלות, מדרוג, Moody's ו-S&P, עם עוגן דירוג ורצף עד דרגות distressed.</p></div>
       <div class="feat reveal d1"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg></div><h3>תמחור אג"ח תיאורטי</h3><p>שווי הוגן מול מחיר שוק, תשואה ריאלית מול נומינלית, התאמת אינפלציה לצמודים, וזיהוי תמחור חסר או יתר.</p></div>
-      <div class="feat reveal d2"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 8v4l3 2"/></svg></div><h3>מד מצוקה</h3><p>סיווג לשלוש דרגות: מצוקה, לבחינה, הזדמנות. משלב מרווח, איתות קשה ושקיפות, ומונע את מלכודת ההזדמנות המדומה.</p></div>
+      <div class="feat reveal d2"><div class="ico"><svg viewBox="0 0 24 24"><path d="M16 8a4 4 0 10-8 0c0 3-2 4-2 7h12c0-3-2-4-2-7z"/><path d="M9 19a3 3 0 006 0"/><path d="M12 2v2"/></svg></div><h3>סימולטור הסדרי חוב</h3><p>תמחור חבילת הסדר מלאה: תספורת, המרה למניות, ריבית נצברה ותקופת ביניים, עם הסתברות כשל גלומה ונקודות איזון. שווי לאגורה מול מחיר השוק.</p></div>
       <div class="feat reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div><h3>חילוץ אוטומטי</h3><p>העלאת דוח כספי או קובץ MAGNA והמערכת ממלאת את טופס האשראי לבד: מינוף, כיסוי ריבית, דירוג וסקטור.</p></div>
-      <div class="feat reveal d1"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M9 9h6v6H9z"/></svg></div><h3>ניתוח קובננטים</h3><p>מרווח ביטחון מול אמות מידה פיננסיות, סיווג חומרה לפי סוג הקובננט, והתרעה על הפרה או קרבה להפרה.</p></div>
+      <div class="feat reveal d1"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M9 9h6v6H9z"/></svg></div><h3>קובננטים וניטור עצמאי</h3><p>מרווח ביטחון מול אמות המידה, זיהוי הצהרת עמידה מהדוח עצמו וסינון ספי-שווא. וגם כשהדוח מצהיר שהכל תקין, המרווח החשבונאי ומגמת השחיקה ממשיכים להימדד.</p></div>
       <div class="feat reveal d2"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div><h3>הון בנקאי ו-CoCo</h3><p>טיפול ייעודי ב-AT1 ו-Tier 2, מרחק מטריגר CET1 ועונש מבני לפי דרגת הנחיתות, בהתאם לנב"ת 202.</p></div>
       <div class="feat reveal"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9v6a3 3 0 003 3h6"/></svg></div><h3>חשיפה צולבת</h3><p>סריקת כל התיקים בו זמנית כדי לחשוף את החשיפה הכוללת לאותו מנפיק, ממוינת לפי משקל בכל תיק.</p></div>
       <div class="feat reveal d1"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2l9 4.5v5C21 17 17 21 12 23 7 21 3 17 3 11.5v-5z"/></svg></div><h3>דיסוננס דירוג-שוק</h3><p>זיהוי פער בין הדירוג הרשמי, הדירוג שהשוק מתמחר, וההערכה של המודל. אזהרה מוקדמת לפני שהשוק מתעורר.</p></div>
-      <div class="feat reveal d2"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 16v-5M12 16V8M16 16v-9"/></svg></div><h3>ניטור והתראות בזמן אמת</h3><p>מעקב רציף אחר התיק, זיהוי פתיחת מרווח חדה ודיווחי מאיה מהותיים, והתראה שמגיעה ישירות לטלגרם או לדסק ברגע שמשהו חורג.</p></div>
+      <div class="feat reveal d2"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 16v-5M12 16V8M16 16v-9"/></svg></div><h3>ניטור והתראות בזמן אמת</h3><p>מעקב רציף אחר התיק, זיהוי פתיחת מרווח חדה ודיווחי מאיה מהותיים, כולל זימון אסיפת מחזיקים, והתראה ישירות לטלגרם או לדסק ברגע שמשהו חורג.</p></div>
       <div class="feat reveal"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></div><h3>מבט-על מצרפי</h3><p>לוח בקרה שמרכז את כל מדדי הסיכון של התיק במסך אחד: ציון משוקלל, פיזור, תשואה ממוצעת וטיקר חי של האחזקות.</p></div>
       <div class="feat reveal d1"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>בקרת השקעות</h3><p>הגדרת מגבלות השקעה והתרעה על חריגה: תקרת מח"מ, חשיפה ל-High Yield, משקל מקסימלי לסקטור ולמנפיק יחיד וציון סיכון משוקלל.</p></div>
       <div class="feat reveal d2"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 12h3l3 7 4-14 3 7h5"/></svg></div><h3>בחינות לחץ</h3><p>תרחישי קיצון ברמת האג"ח הבודדת וברמת התיק כולו, לבחינת עמידות מול זעזועי ריבית, מרווח ואשראי.</p></div>
@@ -865,6 +913,68 @@ PRICING_HIDDEN_END -->
         <span>מדרוג</span>
         <span class="en">Moody's</span>
         <span class="en">S&amp;P Global</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RESTRUCTURING (NEW) ===================== -->
+<section id="restructuring">
+  <div class="rst-glow"></div>
+  <div class="grid-bg"></div>
+  <div class="wrap">
+    <div class="rst-grid">
+      <!-- copy -->
+      <div>
+        <div class="ai-badge reveal"><svg viewBox="0 0 24 24"><path d="M12 2l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></svg> Debt Restructuring · חדש</div>
+        <div class="section-title reveal d1" style="margin-top:16px;">כשנייר נכנס להסדר, ARIYA מתמחרת את החבילה</div>
+        <p class="section-lead reveal d2" style="margin-right:0;">באג"ח רגיל התזרים ידוע. בהסדר חוב הוא משתנה לחלוטין, ומנהל ההשקעות צריך תשובה בזמן אמת: מה שיעור ההשבה הצפוי, והאם מחיר השוק משקף אפסייד או דאונסייד מול החבילה שעל השולחן. ARIYA היא המערכת היחידה בשוק שעונה על זה במספרים.</p>
+        <div class="pf-feats reveal d3">
+          <div class="pf-feat"><div class="ico"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="4" cy="6" r="1.4"/><circle cx="4" cy="12" r="1.4"/><circle cx="4" cy="18" r="1.4"/></svg></div><div><h3>שני מצבי עבודה</h3><p>תרחישים הסתברותיים כשהמתווה עוד לא ידוע, ותמחור חבילה ספציפית כשהיא מובאת להצבעת המחזיקים.</p></div></div>
+          <div class="pf-feat"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg></div><div><h3>מדדים שגוזרים החלטה</h3><p>הסתברות כשל גלומה במחיר, Recovery נקודת איזון, ושווי הרכיב המנייתי שמאזן את החבילה מול השוק.</p></div></div>
+          <div class="pf-feat"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 12h8M8 8h8M8 16h5"/></svg></div><div><h3>עומק מוסדי בחבילה</h3><p>תספורת, המרה למניות, ריבית נצברה בשלושה טיפולים, תקופת ביניים (Standstill), הוצאות הליך ו-Cash Sweep.</p></div></div>
+          <div class="pf-feat"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7c0 5-2 6-2 6h18s-2-1-2-6a7 7 0 00-7-7z"/><path d="M10 21a2 2 0 004 0"/></svg></div><div><h3>זיהוי מוקדם</h3><p>זימון אסיפת מחזיקים, האינדיקטור הקלאסי שמקדים הסדר, מסומן אוטומטית בחומרה גבוהה במנוע ההתראות.</p></div></div>
+        </div>
+      </div>
+
+      <!-- package simulator mock -->
+      <div class="rst-mock reveal d1">
+        <div class="mock-head" style="border:none; padding-bottom:8px;">
+          <div>
+            <div class="name">נורד אטלנטיק א' · סימולטור הסדר</div>
+            <div class="meta">מחיר שוק 41.8 · בהסדר · נדל"ן חו"ל</div>
+          </div>
+          <div class="wm">ARIYA</div>
+        </div>
+        <div class="rst-tabs">
+          <span class="rst-tab">תרחישים הסתברותיים</span>
+          <span class="rst-tab on">תמחור חבילת הסדר</span>
+        </div>
+        <div class="wf-label"><span>הרכב החבילה המוצעת (לכל 100 ע"נ)</span><span class="ltr">Package Composition</span></div>
+        <div class="wf go">
+          <div class="wf-track">
+            <div class="wf-seg bond" style="width:50%;">אג"ח חדש 50% · שווי 39.9</div>
+            <div class="wf-seg eq" style="width:20%;">מניות 20% · 8.0</div>
+            <div class="wf-seg cut" style="width:30%;">מחיקה 30%</div>
+          </div>
+        </div>
+        <div class="rst-kpis">
+          <div class="tile"><div class="tl">שווי החבילה</div><div class="tv g">47.9</div></div>
+          <div class="tile"><div class="tl">מחיר שוק</div><div class="tv">41.8</div></div>
+          <div class="tile"><div class="tl">פער גלום</div><div class="tv up">+14.6%</div></div>
+        </div>
+        <div class="rst-mini">
+          <div class="tile"><div class="tl">הסתברות כשל גלומה</div><div class="tv">38%</div></div>
+          <div class="tile"><div class="tl">Recovery נקודת איזון</div><div class="tv">52%</div></div>
+        </div>
+        <div class="rst-chips">
+          <span class="chip">ריבית נצברה · 3 טיפולים</span>
+          <span class="chip">Standstill</span>
+          <span class="chip">הוצאות הליך</span>
+          <span class="chip">Cash Sweep</span>
+        </div>
+        <div class="rst-read"><b>קריאת המודל:</b> החבילה המוצעת שווה 47.9 לאגורה מול שוק 41.8, אפסייד גלום לאישור ההסדר. נקודת האיזון לרכיב המנייתי: 9% בלבד מול הנחת 40%.</div>
+        <div class="demo-cap">הדמיה להמחשה בלבד · השמות והנתונים בדויים</div>
       </div>
     </div>
   </div>
@@ -948,6 +1058,7 @@ PRICING_HIDDEN_END -->
           <div class="pf-feat reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7c0 5-2 6-2 6h18s-2-1-2-6a7 7 0 00-7-7z"/><path d="M10 21a2 2 0 004 0"/></svg></div><div><h3>זיהוי אירוע חריג בזמן אמת</h3><p>פתיחת מרווח חדה, חריגה ביחס לשוק או דיווח מהותי, מסומנים ברגע שהם קורים ולא בדיעבד.</p></div></div>
           <div class="pf-feat reveal d1"><div class="ico"><svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></div><div><h3>התראות לטלגרם ולדסק</h3><p>ההתראה מגיעה ישירות לנייד או לקבוצת חדר המסחר ברגע האירוע, בלי שאיש צריך להיות מול המערכת.</p></div></div>
           <div class="pf-feat reveal d2"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div><h3>ניטור אוטונומי 24/7</h3><p>מנוע שרץ ברקע סביב השעון, מושך נתונים ודיווחים שוטפים ומתריע גם כשאף אחד לא מול המערכת.</p></div></div>
+          <div class="pf-feat reveal d3"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M9 9h6v6H9z"/></svg></div><div><h3>ניטור עצמאי לקובננטים</h3><p>הצהרת עמידה בדוח לא משתיקה את החיישנים: המרווח החשבונאי לסף ומגמת השחיקה בין דוחות נמדדים תמיד.</p></div></div>
           <div class="pf-feat reveal d3"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 4 8-8"/><path d="M21 8v5h-5"/></svg></div><div><h3>מד מצוקה חי ו-Drift</h3><p>המרווח, התשואה והציון מתעדכנים מול נתוני שוק חיים, בלי לדרוס את ניתוח הפונדמנטל: "נכון לניתוח" מול "נכון לעכשיו".</p></div></div>
         </div>
       </div>
@@ -971,6 +1082,11 @@ PRICING_HIDDEN_END -->
           <div class="alert-top"><span class="src"><span class="alert-dot"></span> דיווח מהותי · קריטי</span><span class="tm">11:18</span></div>
           <div class="alert-title"><b>א.ל.מ אחזקות</b> · זוהה דיווח מאיה: משיכת כספים על ידי בעל השליטה</div>
           <div class="alert-chips"><span class="chip red">איתות קשה</span><span class="chip muted">לבחינה מיידית</span></div>
+        </div>
+        <div class="alert warn">
+          <div class="alert-top"><span class="src"><span class="alert-dot"></span> דיווח מאיה · חומרה גבוהה</span><span class="tm">12:47</span></div>
+          <div class="alert-title"><b>נורד אטלנטיק</b> · זימון אסיפת מחזיקי אג"ח, אינדיקטור מוקדם להסדר חוב</div>
+          <div class="alert-chips"><span class="chip amber">אסיפת מחזיקים</span><span class="chip amber">סימולטור הסדר זמין</span></div>
         </div>
         <div class="alert warn">
           <div class="alert-top"><span class="src"><span class="alert-dot"></span> מגמת מרווח · לבחינה</span><span class="tm">13:05</span></div>
@@ -1063,6 +1179,11 @@ PRICING_HIDDEN_END -->
         <div class="cmp-cell ariya"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>המספרים מוצלבים מול הדוח עצמו. יחידות ותקופות מיושרות אוטומטית, בלי המצאות</div>
       </div>
       <div class="cmp-row">
+        <div class="cmp-dim">הסדרי חוב</div>
+        <div class="cmp-cell gen"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>יכול להסביר מה זה הסדר, לא לתמחר חבילה מול מחיר שוק</div>
+        <div class="cmp-cell ariya"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>סימולטור מלא: תספורת, המרה למניות, נצברה, Standstill ו-Sweep, שווי לאגורה מול השוק</div>
+      </div>
+      <div class="cmp-row">
         <div class="cmp-dim">תמונת תיק</div>
         <div class="cmp-cell gen"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>רואה דוח אחד, בלי מושג מה עוד מוחזק בתיק</div>
         <div class="cmp-cell ariya"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>רואה את כל התיק: חשיפה כוללת לכל מנפיק, ריכוזיות ומגבלות השקעה</div>
@@ -1093,9 +1214,10 @@ PRICING_HIDDEN_END -->
     <div class="faq reveal">
       <div class="faq-item"><button class="faq-q">האם הנתונים שלי נשמרים בשרת חיצוני?<span class="pm">+</span></button><div class="faq-a"><p>הניתוח מבוסס על נתונים שאתם מזינים. המערכת נבנתה לעבודה מקצועית עם שמירה על סודיות המידע, וכל תיק נשמר בנפרד במרחב המשתמש.</p></div></div>
       <div class="faq-item"><button class="faq-q">אפשר לקבל הדגמה של המערכת?<span class="pm">+</span></button><div class="faq-a"><p>בהחלט. אנחנו עורכים הדגמה אישית שבה מריצים ניתוח חי על תיק לדוגמה, מציגים את מנוע הדירוג, התמחור, מד המצוקה ובקרת ההשקעות, ומתאימים את התרחיש לסוג האחזקות שלכם. ניתן לתאם דרך כפתור "תיאום הדגמה".</p></div></div>
+      <div class="faq-item"><button class="faq-q">האם המערכת יודעת לתמחר הסדרי חוב?<span class="pm">+</span></button><div class="faq-a"><p>כן, בשתי רמות. כשהמתווה עוד לא ידוע, מנוע התרחישים ההסתברותיים מחשב שווי צפוי, הסתברות כשל גלומה במחיר ו-Recovery נקודת איזון. וכשחבילה ספציפית מובאת להצבעה, סימולטור החבילה מתמחר אותה במלואה: תספורת, המרה למניות, ריבית נצברה, תקופת ביניים, הוצאות הליך ו-Cash Sweep, ומציג שווי לאגורה מול מחיר השוק.</p></div></div>
       <div class="faq-item"><button class="faq-q">על איזו מתודולוגיה מבוסס המודל?<span class="pm">+</span></button><div class="faq-a"><p>מנוע הדירוג של ARIYA הוא קנייני, ונשען על עקרונות המתודולוגיה של חברות הדירוג המובילות: מעלות, מדרוג, Moody's ו-S&P. הוא מתרגם יחסים פיננסיים, מבנה הנפקה וסיכון סקטוריאלי לציון אחיד, ומספק דירוג משתמע לצד הסבר שקוף מאחורי כל ציון.</p></div></div>
       <div class="faq-item"><button class="faq-q">האם ARIYA מהווה ייעוץ השקעות?<span class="pm">+</span></button><div class="faq-a"><p>לא. ARIYA היא כלי אנליטי לבעלי מקצוע בלבד. הפלט אינו ייעוץ השקעות, שיווק השקעות או תחליף לבדיקת נאותות עצמאית. האחריות לשימוש ולהחלטות היא של המשתמש בלבד.</p></div></div>
-      <div class="faq-item"><button class="faq-q">איזה סוגי מנפיקים נתמכים?<span class="pm">+</span></button><div class="faq-a"><p>המערכת מכסה 20 סקטורים ומיפוי של 239 מנפיקים בישראל, כולל בנקים, נדל"ן מניב ויזמי, חברות אחזקה, תשתיות, אנרגיה ומכשירי הון בנקאי כמו AT1 ו-Tier 2.</p></div></div>
+      <div class="faq-item"><button class="faq-q">איזה סוגי מנפיקים נתמכים?<span class="pm">+</span></button><div class="faq-a"><p>המערכת מכסה 20 סקטורים ומיפוי של 239 מנפיקים בישראל, כולל בנקים, נדל"ן מניב ויזמי, חברות אחזקה, תשתיות, אנרגיה, ביטוח ומכשירי הון בנקאי כמו AT1 ו-Tier 2.</p></div></div>
       <div class="faq-item"><button class="faq-q">איך מתחילים?<span class="pm">+</span></button><div class="faq-a"><p>מתאמים פנייה אישית, עורכים הדגמה של המערכת על תיק לדוגמה, ומגדירים יחד את אופן ההטמעה והגישה בהתאם לצרכים שלכם.</p></div></div>
     </div>
   </div>
@@ -1120,6 +1242,7 @@ PRICING_HIDDEN_END -->
   <div class="wrap">
     <div class="fnav">
       <a href="#about">מהי ARIYA</a><span>·</span>
+      <a href="#restructuring">הסדרי חוב</a><span>·</span>
       <a href="#surveillance">התראות</a><span>·</span>
       <a href="#vs">למה ARIYA</a><span>·</span>
       <a onclick="openApp()">כניסה למערכת</a><span>·</span>
@@ -1368,9 +1491,10 @@ function stagger(container, sel, cls, base, step){
 stagger(document.querySelector('.chat'), '.msg', 'play', 200, 750);          /* שיחה שמתנגנת */
 stagger(document.querySelector('.alert-feed'), '.alert', 'live', 250, 850);  /* התראות שנוחתות */
 stagger(document.querySelector('.heat'), '.cell', 'go', 100, 55);            /* מפת חום */
+stagger(document.querySelector('.wf'), '.wf-seg', 'go', 200, 220);           /* הרכב חבילת ההסדר */
 
 /* scrollspy: הדגשת הקישור הפעיל בתפריט */
-const spyIds = ['how','features','portfolio','surveillance','copilot','vs','faq'];
+const spyIds = ['how','features','restructuring','portfolio','surveillance','copilot','vs','faq'];
 const spy = new IntersectionObserver(es => {
   es.forEach(e => {
     if(!e.isIntersecting) return;
